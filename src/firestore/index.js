@@ -33,16 +33,13 @@ const fetchProduct = async (id) => {
 };
 
 const addProduct = async ({
-  name = 'Empty', weight = '100g', imageUrl = '', width = 10, height = 10, count = 1,
+  name, weight, imageUrl, size, count,
 }) => {
   await addDoc(collection(firestore, 'products'), {
     name,
     weight,
     imageUrl,
-    size: {
-      width,
-      height,
-    },
+    size,
     count,
   });
   return fetchAllProducts();

@@ -28,11 +28,18 @@ const Products = () => {
     setProducts(newProducts);
   };
 
-  const handleSave = async ({ name, weight, imageUrl }) => {
+  const handleSave = async ({
+    name = 'Empty', weight = '50g', imageUrl = '', width = 100, height = 100, count = 1,
+  }) => {
     const newProducts = await addProduct({
       name,
       weight,
       imageUrl,
+      size: {
+        width,
+        height,
+      },
+      count,
     });
 
     setProducts(newProducts);
